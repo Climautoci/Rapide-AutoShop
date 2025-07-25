@@ -2,61 +2,211 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rapide AutoShop</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapide AutoShop - Eshop</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #e3f2fd, #fff);
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #222, #444);
+      color: #fff;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1rem;
+    }
+    .catalogue {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .product {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    }
+    .product img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .product h3 {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      color: #222;
+    }
+    .product p {
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #25d366, #1da851);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      text-decoration: none;
+      margin-top: 0.5rem;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: linear-gradient(135deg, #1da851, #15803d);
+    }
+    .cart {
+      padding: 1.5rem;
+      background: #fff;
+      margin: 2rem auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      max-width: 600px;
+    }
+    .cart h2 {
+      margin-top: 0;
+    }
+    .payment, .delivery {
+      margin-top: 1rem;
+    }
+    select {
+      padding: 0.4rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <div class="container">
-      <h1>Rapide AutoShop</h1>
-      <p>Spécialiste des trottinettes électriques et accessoires auto en Côte d'Ivoire</p>
-    </div>
+    <h1>Rapide AutoShop</h1>
+    <p>Commandez vos produits auto en CFA</p>
   </header>
 
-  <section class="hero">
-    <img src="banniere.jpg" alt="Trottinette électrique" />
-    <h2>Trottinettes Électriques</h2>
-    <p>Plus rapide, plus propre, plus fun</p>
-  </section>
+  <main>
+    <section class="catalogue" id="catalogue">
+      <!-- Produits dynamiques -->
+    </section>
 
-  <section class="products">
-    <h2>🚀 Mobilité Électrique</h2>
-    <div class="grid">
-      <div class="product"><img src="g4.jpg"/><h3>Kukirin G4 Pro</h3><p>790 000 FCFA</p></div>
-      <div class="product"><img src="gt08.jpg"/><h3>Arwibon GT08</h3><p>480 000 FCFA</p></div>
-      <div class="product"><img src="sunra.jpg"/><h3>Sunra Miku Max</h3><p>380 000 FCFA</p></div>
-      <div class="product"><img src="ku16.jpg"/><h3>Lvyu KU-16</h3><p>610 000 FCFA</p></div>
-      <div class="product"><img src="geo.jpg"/><h3>GEOFOUGHT 4X4</h3><p>2 345 000 FCFA</p></div>
-      <div class="product"><img src="joyor.jpg"/><h3>Joyor S10-S</h3><p>455 000 FCFA</p></div>
-    </div>
-  </section>
+    <section class="cart" id="cart">
+      <h2>Panier</h2>
+      <div id="cartItems">Votre panier est vide.</div>
+      <div class="delivery">
+        <h3>Estimation livraison</h3>
+        <select id="zoneSelect">
+          <option value="">-- Choisir une zone --</option>
+          <option value="1500">Abidjan (intra)</option>
+          <option value="2000">Bingerville / Yopougon</option>
+          <option value="sur_demande">San Pedro / Assinie</option>
+        </select>
+        <p id="deliveryCost"></p>
+      </div>
+      <div class="payment">
+        <h3>Paiement</h3>
+        <ul>
+          <li>Orange Money</li>
+          <li>MTN Mobile Money</li>
+          <li>Moov Money</li>
+          <li>Wave</li>
+          <li>Djamo</li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-  <section class="products">
-    <h2>🧰 Accessoires Auto</h2>
-    <div class="grid">
-      <div class="product"><img src="volant.jpg"/><h3>Couvre volant carbone</h3><p>10 600 FCFA</p></div>
-      <div class="product"><img src="gt06.jpg"/><h3>Précommande Arwibon GT06</h3><p>528 000 FCFA</p></div>
-      <div class="product"><img src="capteur.jpg"/><h3>Capteur stationnement LED</h3><p>21 100 FCFA</p></div>
-      <div class="product"><img src="accoudoir.jpg"/><h3>Accoudoir universel</h3><p>47 800 FCFA</p></div>
-      <div class="product"><img src="housse.jpg"/><h3>Housse siège simili cuir</h3><p>48 000 FCFA</p></div>
-      <div class="product"><img src="booster.jpg"/><h3>Booster / Démarreur</h3><p>79 300 FCFA</p></div>
-    </div>
-  </section>
+  <script>
+    let products = [];
+    const catalogue = document.getElementById('catalogue');
+    const cartItems = document.getElementById('cartItems');
+    const zoneSelect = document.getElementById('zoneSelect');
+    const deliveryCost = document.getElementById('deliveryCost');
+    let cart = [];
 
-  <section class="partners">
-    <h2>🤝 Nos Partenaires</h2>
-    <div class="logos">
-      <img src="moio.png" alt="MoioMoio Pay" />
-      <img src="cfao.png" alt="CFAO" />
-      <img src="kabalane.png" alt="Kabalane" />
-    </div>
-  </section>
+    async function loadProducts() {
+      try {
+        const res = await fetch('products.json');
+        const data = await res.json();
+        products = data.products;
+        renderProducts();
+      } catch (e) {
+        catalogue.innerHTML = '<p>Erreur de chargement des produits.</p>';
+      }
+    }
 
-  <footer>
-    <p>&copy; 2025 Rapide AutoShop | Powered by Clim Auto</p>
-  </footer>
+    function renderProducts() {
+      catalogue.innerHTML = '';
+      products.forEach((p, index) => {
+        const productDiv = document.createElement('div');
+        productDiv.className = 'product';
+        productDiv.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" />
+          <h3>${p.name}</h3>
+          <p>${p.desc}</p>
+          <p><strong>${p.price.toLocaleString()} FCFA</strong></p>
+          <a href="#" class="btn" onclick="addToCart(${index})">Ajouter au panier</a>
+        `;
+        catalogue.appendChild(productDiv);
+      });
+    }
 
-  <a href="https://wa.me/2250170047004" class="whatsapp" target="_blank">💬</a>
+    function addToCart(index) {
+      cart.push(products[index]);
+      renderCart();
+    }
+
+    function renderCart() {
+      if (cart.length === 0) {
+        cartItems.textContent = 'Votre panier est vide.';
+        return;
+      }
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach((item) => {
+        total += item.price;
+        const div = document.createElement('div');
+        div.textContent = `${item.name} - ${item.price.toLocaleString()} FCFA`;
+        cartItems.appendChild(div);
+      });
+      const totalDiv = document.createElement('div');
+      totalDiv.innerHTML = `<strong>Total produits : ${total.toLocaleString()} FCFA</strong>`;
+      cartItems.appendChild(totalDiv);
+    }
+
+    zoneSelect.addEventListener('change', () => {
+      const val = zoneSelect.value;
+      if (val === 'sur_demande') {
+        deliveryCost.textContent = 'Tarif sur demande via WhatsApp.';
+      } else if (val) {
+        deliveryCost.textContent = `Livraison : ${parseInt(val).toLocaleString()} FCFA`;
+      } else {
+        deliveryCost.textContent = '';
+      }
+    });
+
+    loadProducts();
+  </script>
 </body>
 </html>

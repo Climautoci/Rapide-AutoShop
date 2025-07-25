@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "name": "Tapis de sol caoutchouc",
+      "price": 12000,
+      "img": "https://via.placeholder.com/250",
+      "desc": "Tapis antidérapant pour voiture."
+    },
+    {
+      "name": "Batterie 12V",
+      "price": 70000,
+      "img": "https://via.placeholder.com/250",
+      "desc": "Batterie voiture longue durée."
+    },
+    {
+      "name": "Booster de batterie",
+      "price": 45000,
+      "img": "https://via.placeholder.com/250",
+      "desc": "Démarreur portable pour batteries faibles."
+    }
+  ]
+}
